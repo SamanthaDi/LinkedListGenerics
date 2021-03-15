@@ -33,6 +33,7 @@ public class Main {
         lista3.add(54.3858);
         lista3.add(4.851);
         lista3.add(85.675);
+        lista3.add(6.278);
 
 
         LinkedList<Integer>.Iterator it = lista1.getIterator();
