@@ -6,7 +6,7 @@ import static uaslp.ingenieria.labs.list.Position.BEFORE;
 /**
  * Lista doblemente ligada
  */
-public class LinkedList<G> {
+public class LinkedList<G> implements List<G> {
 
     // static -> Pertenece a la clase y no al objeto
     private static class Node<T>{
@@ -38,14 +38,14 @@ public class LinkedList<G> {
 
 
 
-    public class Iterator {
+    public class ForwardIterator implements Iterator<G> {
         private Node<G> currentNode;
 
-        public Iterator() {
+        public ForwardIterator() {
             this.currentNode = head;
         }
 
-        public Iterator(Iterator iterator){
+        public ForwardIterator(ForwardIterator iterator){
             currentNode = iterator.currentNode;
         }
 
@@ -67,7 +67,7 @@ public class LinkedList<G> {
         }
     }
 
-    public class ReverseIterator {
+    public class ReverseIterator implements Iterator<G>{
 
         private Node<G> currentNode;
 
@@ -90,10 +90,11 @@ public class LinkedList<G> {
     }
 
     /**
-     * Inserts data at the end of the list
+     * Inserts data at the end of the List
      *
      * @param data Data to be inserted
      */
+    @Override
     public void add(G data) {
         Node<G> node = new Node<>(data);
 
@@ -115,6 +116,7 @@ public class LinkedList<G> {
      * @param index 0-index
      * @return data in index
      */
+    @Override
     public G get(int index) {
         Node<G> currentNode = head;
         int currentIndex = 0;
@@ -127,6 +129,7 @@ public class LinkedList<G> {
         return currentNode.data;
     }
 
+    @Override
     public void delete(int index) {
         Node<G> currentNode = head;
         int currentIndex = 0;
@@ -165,15 +168,17 @@ public class LinkedList<G> {
 
     }
 
-    public Iterator getIterator() {
-        return new Iterator();
+    @Override
+    public Iterator<G> getIterator() {
+        return new ForwardIterator();
     }
 
-    public void insert(G data, Position position, Iterator it) {
+    @Override
+    public void insert(G data, Position position, Iterator<G> it) {
         // ¿qué ofrece java para restringir los valores de position a solamente BEFORE y AFTER?
 
         Node<G> newNode = new Node<>(data);
-        Node<G> currentNode = it.getCurrentNode();
+        Node<G> currentNode = ((ForwardIterator)it).getCurrentNode();
 
         if (position == AFTER) {
             newNode.next = currentNode.next;
@@ -199,10 +204,12 @@ public class LinkedList<G> {
         size++;
     }
 
+    @Override
     public int getSize() {
         return size;
     }
 
+    @Override
     public ReverseIterator getReverseIterator() {
         return new ReverseIterator();
     }
