@@ -1,9 +1,6 @@
 package uaslp.ingenieria.labs;
 
-import uaslp.ingenieria.labs.list.Iterator;
-import uaslp.ingenieria.labs.list.LinkedList;
-import uaslp.ingenieria.labs.list.List;
-import uaslp.ingenieria.labs.list.Position;
+import uaslp.ingenieria.labs.list.*;
 
 public class Main {
 
@@ -16,9 +13,9 @@ public class Main {
         // Wrapper classes -> Integer, Float, Character, Boolean
         //Las wrapper classes son "Inmutables"
 
-        List<Integer> lista1 = new LinkedList<>();
-        List<String> lista2 = new LinkedList<>();
-        List<Double> lista3 = new LinkedList<>();
+        List<Integer> lista1 = new ArrayList<>();
+        List<String> lista2 = new ArrayList<>();
+        List<Double> lista3 = new ArrayList<>();
 
         lista1.add(1);
         lista1.add(7);
@@ -32,7 +29,6 @@ public class Main {
         lista2.add("diferente");
         lista2.add("otra vez");
 
-
         lista3.add(3.1416);
         lista3.add(54.3858);
         lista3.add(4.851);
@@ -40,22 +36,7 @@ public class Main {
         lista3.add(6.278);
 
 
-        /*Iterator<Integer> it = lista1.getIterator();
-
-        while(it.hasNext()){
-            LinkedList.ForwardIterator backupIt = lista1.new ForwardIterator(it);
-            int element = it.next(); //regresar el dato y avanzar el iterador
-
-            if(element == 3){
-                lista1.insert(24, Position.BEFORE, backupIt);
-            }
-
-            if(element == 7){
-                lista1.insert(33, Position.AFTER, backupIt);
-            }
-        }*/
-
-        lista1.delete(3);
+        //lista1.delete(3);
 
         System.out.println("---------------------");
 
