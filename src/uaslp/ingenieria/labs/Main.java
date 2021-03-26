@@ -26,8 +26,6 @@ public class Main {
         lista2.add(" soy");
         lista2.add(" un  ");
         lista2.add(" main");
-        lista2.add("diferente");
-        lista2.add("otra vez");
 
         lista3.add(3.1416);
         lista3.add(54.3858);
