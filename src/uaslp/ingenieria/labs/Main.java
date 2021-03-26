@@ -34,7 +34,7 @@ public class Main {
         lista3.add(6.278);
 
 
-        //lista1.delete(3);
+        lista1.delete(2);
 
         System.out.println("---------------------");
 

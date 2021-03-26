@@ -28,8 +28,13 @@ public class ArrayList<H> implements List<H> {
 
     @Override
     public void delete(int index) {
-        //int currentIndex;
-        //for(currentIndex )
+        if(index <0 && index >= size)
+            return;
+        int currentIndex;
+        for (currentIndex = index+1; currentIndex < size; currentIndex++){
+            this.array[currentIndex -1] = this.array[currentIndex];
+        }
+        size--;
     }
 
     @Override
