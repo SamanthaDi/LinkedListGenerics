@@ -49,6 +49,7 @@ public class LinkedList<G> implements List<G> {
             currentNode = iterator.currentNode;
         }
 
+        @Override
         public boolean hasNext(){
             return currentNode != null;
         }
@@ -76,6 +77,7 @@ public class LinkedList<G> implements List<G> {
         }
 
 
+        @Override
         public boolean hasNext(){
             return currentNode != null;
         }

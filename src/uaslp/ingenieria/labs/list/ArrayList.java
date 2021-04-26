@@ -61,6 +61,7 @@ public class ArrayList<H> implements List<H> {
 
         private int currentIndex;
 
+        @Override
         public boolean hasNext(){
             return currentIndex < size;
         }
@@ -76,6 +77,7 @@ public class ArrayList<H> implements List<H> {
         public ReverseIterator() {
             this.currentIndex = size-1;
         }
+        @Override
         public boolean hasNext(){
             return currentIndex > 0;
         }

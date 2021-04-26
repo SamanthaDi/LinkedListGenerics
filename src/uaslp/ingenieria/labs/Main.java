@@ -15,7 +15,7 @@ public class Main {
 
         List<Integer> lista1 = new ArrayList<>();
         List<String> lista2 = new ArrayList<>();
-        List<Double> lista3 = new ArrayList<>();
+        List<Double> lista3 = new LinkedList<>();
 
         lista1.add(1);
         lista1.add(7);
