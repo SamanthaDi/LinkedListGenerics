@@ -3,11 +3,11 @@ import uaslp.ingenieria.labs.list.Iterator;
 
 public class ArrayList<H> implements List<H> {
 
-    private Object[] array;
+    private Object array[];
     private int size;
 
     public ArrayList() {
-        this.array = new Object[2];
+        this.array = new Object[4];
     }
 
     @Override
@@ -22,17 +22,19 @@ public class ArrayList<H> implements List<H> {
     }
 
     @Override
-    public H get(int index) {
+    public H get(int index) throws MyArrayIndexOutOfBoundsException{
+        if(index <0 || index >= size){
+            throw new MyArrayIndexOutOfBoundsException();
+        }
         return (H) array[index];
     }
 
     @Override
-    public void delete(int index) {
-        if(index <0 && index >= size)
-            return;
-        int currentIndex;
-        for (currentIndex = index+1; currentIndex < size; currentIndex++){
-            this.array[currentIndex -1] = this.array[currentIndex];
+    public void delete(int index) throws MyIndexOutOfBoundsException{
+        if(array.length - (index + 1) >= 0){
+            System.arraycopy(this.array, index + 1, this.array, index + 1 - 1, array.length - (index + 1));
+        } else{
+            throw new MyIndexOutOfBoundsException();
         }
         size--;
     }
@@ -79,7 +81,7 @@ public class ArrayList<H> implements List<H> {
         }
         @Override
         public boolean hasNext(){
-            return currentIndex > 0;
+            return currentIndex >= 0;
         }
 
         public H next(){

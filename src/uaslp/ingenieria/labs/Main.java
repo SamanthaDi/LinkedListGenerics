@@ -7,7 +7,7 @@ public class Main {
     // Inner classes
     // Outer classes
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyIndexOutOfBoundsException {
 
         int cuenta =  LinkedList.getListsCount();
         // Wrapper classes -> Integer, Float, Character, Boolean

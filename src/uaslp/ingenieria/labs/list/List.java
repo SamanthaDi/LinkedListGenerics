@@ -3,9 +3,9 @@ package uaslp.ingenieria.labs.list;
 public interface List<T>{
     void add(T data);
 
-    T get(int index);
+    T get(int index) throws MyArrayIndexOutOfBoundsException;
 
-    void delete(int index);
+    void delete(int index) throws MyIndexOutOfBoundsException;
 
     int getSize();
 
