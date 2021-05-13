@@ -25,11 +25,10 @@ public class LinkedList<G> implements List<G> {
     private Node<G> tail;
     private int size;
 
+    private static int listsCount = 0;
     public LinkedList() {
         listsCount ++;
     }
-
-    private static int listsCount = 0;
 
     public static int getListsCount(){
         return listsCount;
@@ -119,7 +118,11 @@ public class LinkedList<G> implements List<G> {
      * @return data in index
      */
     @Override
-    public G get(int index) {
+    public G get(int index) throws MyArrayIndexOutOfBoundsException{
+        if(index <0 || index >= size){
+            throw new MyArrayIndexOutOfBoundsException();
+        }
+
         Node<G> currentNode = head;
         int currentIndex = 0;
 
@@ -132,12 +135,12 @@ public class LinkedList<G> implements List<G> {
     }
 
     @Override
-    public void delete(int index) {
+    public void delete(int index) throws MyIndexOutOfBoundsException{
         Node<G> currentNode = head;
         int currentIndex = 0;
 
         if (index < 0 || index >= size) {
-            return;
+            throw new MyIndexOutOfBoundsException();
         }
 
         size--;
@@ -182,6 +185,8 @@ public class LinkedList<G> implements List<G> {
         Node<G> newNode = new Node<>(data);
         Node<G> currentNode = ((ForwardIterator)it).getCurrentNode();
 
+
+
         if (position == AFTER) {
             newNode.next = currentNode.next;
             newNode.previous = currentNode;
@@ -206,10 +211,13 @@ public class LinkedList<G> implements List<G> {
         size++;
     }
 
+
     @Override
     public int getSize() {
+
         return size;
     }
+
 
     @Override
     public ReverseIterator getReverseIterator() {

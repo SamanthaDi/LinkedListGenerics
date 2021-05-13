@@ -12,20 +12,13 @@ public class ArrayListTest {
     //biblioteca -> codigo ya hecho que podemos utilizar
     //Framework -> JUnit
 
-
-
     @Test
-    public void whenArrayListIsCreated_thenSizeIsZero() throws MyArrayIndexOutOfBoundsException {
+    public void whenArrayListIsCreated_thenSizeIsZero(){
         ArrayList<Integer> list = new ArrayList<>();
 
-        //aserciones-> validar que la ejec fue correcta
-        //assertThat(list.getSize()).isZero();
-        //ejecucion
-        list.add(500);
+        int size = list.getSize();
 
-        //validacion
-        assertEquals(1, list.getSize());
-        assertEquals(500, list.get(0));
+        assertEquals(0,size);
     }
     @Test
     public void givenANewArray_WhenAddElement_thenSizeIsOne() throws MyArrayIndexOutOfBoundsException {
@@ -133,7 +126,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void givenAnExistenArrayWith4Elements_WhenDeleteElementHead_thenSizeDecrements() throws MyIndexOutOfBoundsException, MyArrayIndexOutOfBoundsException {
+    public void givenAnExistenListWith4Elements_WhenDeleteElementHead_thenSizeDecrements() throws MyIndexOutOfBoundsException, MyArrayIndexOutOfBoundsException {
         //inicializacion
         ArrayList<Integer> list = new ArrayList<>();
         //ejecucion
@@ -150,6 +143,8 @@ public class ArrayListTest {
         assertEquals(700, list.get(1));
         assertEquals(800, list.get(2));
     }
+
+
     @Test
     public void givenAnExistenArrayWith4Elements_WhenDeleteElementMiddle_thenSizeDecrements() throws MyIndexOutOfBoundsException, MyArrayIndexOutOfBoundsException {
         //inicializacion
