@@ -44,10 +44,6 @@ public class LinkedList<G> implements List<G> {
             this.currentNode = head;
         }
 
-        public ForwardIterator(ForwardIterator iterator){
-            currentNode = iterator.currentNode;
-        }
-
         @Override
         public boolean hasNext(){
             return currentNode != null;
@@ -56,9 +52,7 @@ public class LinkedList<G> implements List<G> {
         public G next(){
             G data = currentNode.data; // Noten que a pesar de que data es private, la outer class (LinkedList) tiene acceso
             // al campo
-
             currentNode = currentNode.next;
-
             return data;
         }
 
@@ -144,13 +138,11 @@ public class LinkedList<G> implements List<G> {
         }
 
         size--;
-
         if (size == 0) {
             head = null;
             tail = null;
             return;
         }
-
         if (index == 0) {
             head = head.next;
             head.previous = null;
@@ -181,32 +173,29 @@ public class LinkedList<G> implements List<G> {
     @Override
     public void insert(G data, Position position, Iterator<G> it) {
         // ¿qué ofrece java para restringir los valores de position a solamente BEFORE y AFTER?
-
         Node<G> newNode = new Node<>(data);
         Node<G> currentNode = ((ForwardIterator)it).getCurrentNode();
 
-
-
         if (position == AFTER) {
             newNode.next = currentNode.next;
-            newNode.previous = currentNode;
             currentNode.next = newNode;
+
             if (newNode.next != null) {
+                newNode.previous = currentNode;
                 newNode.next.previous = newNode;
             } else {
                 tail = newNode;
             }
-        } else if (position == BEFORE) {
+        } else if (position == BEFORE){
             newNode.previous = currentNode.previous;
             newNode.next = currentNode;
             currentNode.previous = newNode;
+
             if (newNode.previous != null) {
                 newNode.previous.next = newNode;
             } else {
                 head = newNode;
             }
-        } else {
-            System.out.println("No conozco el valor de position");
         }
         size++;
     }
